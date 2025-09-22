@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vocalizer — Matilde Pizarro Toro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap" id="app">
+    <header class="topbar" role="banner">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">🎵</div>
+        <div>
+          <h1>Vocalizer</h1>
+          <p class="tag">Entrenador vocal — versión offline</p>
+        </div>
+      </div>
+      <div class="author">Autora: <strong>Matilde Pizarro Toro</strong></div>
+    </header>
+
+    <section class="content" role="main">
+      <aside class="panel controls" aria-labelledby="controlesTitle">
+        <h2 id="controlesTitle">Controles</h2>
+        <label class="field">Rango vocal
+          <select id="rangeSelect" aria-label="Selector de rango vocal">
+            <option value="soprano">Soprano</option>
+            <option value="alto">Alto</option>
+            <option value="tenor">Tenor</option>
+            <option value="bass">Bajo</option>
+            <option value="custom">Personalizado</option>
+          </select>
+        </label>
+        <label class="field" id="customRangeLabel" style="display:none">MIDI raíz
+          <input id="customRoot" type="number" min="36" max="84" value="60" aria-label="MIDI raíz"/>
+        </label>
+
+        <label class="field">Ejercicio
+          <select id="exerciseSelect" aria-label="Selector de ejercicio"></select>
+        </label>
+
+        <label class="field">Tempo (BPM)
+          <div class="rangeRow">
+            <input id="bpm" type="range" min="40" max="200" value="90" aria-label="Tempo BPM"/>
+            <span id="bpmVal">90</span>
+          </div>
+        </label>
+
+        <div class="buttons">
+          <button id="playBtn" class="btn primary" aria-pressed="false">Reproducir</button>
+          <button id="stopBtn" class="btn" aria-pressed="false">Detener</button>
+          <button id="loopBtn" class="btn" aria-pressed="false">Bucle: Off</button>
+        </div>
+
+        <div class="buttons secondary">
+          <button id="findRangeBtn" class="btn">Encontrar rango</button>
+          <button id="recordBtn" class="btn">Grabar</button>
+          <button id="downloadRecordingBtn" class="btn" disabled>Descargar última</button>
+        </div>
+
+        <p class="help">Consejo: toca cualquier parte de la página para activar el audio si el navegador lo requiere.</p>
+      </aside>
+
+      <main class="panel mainpanel" aria-live="polite">
+        <div class="bigDisplay" role="region" aria-label="Sílaba en grande">
+          <div class="solfege" id="solfege" aria-hidden="true">—</div>
+          <div class="noteInfo">
+            <div>Nota: <strong id="detectedNote">--</strong></div>
+            <div>Frecuencia: <strong id="detectedFreq">--</strong> Hz</div>
+            <div>Desviación: <strong id="detectedCents">--</strong> cents</div>
+          </div>
+        </div>
+
+        <div class="vizCard panel" aria-hidden="true">
+          <canvas id="viz" width="800" height="120"></canvas>
+        </div>
+
+        <div class="recordings panel" aria-labelledby="recTitle">
+          <h3 id="recTitle">Grabaciones</h3>
+          <ul id="recordingsList" class="recList" aria-live="polite"></ul>
+        </div>
+      </main>
+    </section>
+
+    <footer class="foot">
+      <small>Proyecto offline — todo local. Compatibilidad: Chrome/Edge/Firefox. Carrier = 11:25 AM mz</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

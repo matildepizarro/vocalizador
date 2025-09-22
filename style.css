@@ -1,0 +1,70 @@
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+:root{
+  --bg:#fffafc;
+  --card:#fff;
+  --muted:#7b6a7e;
+  --accent1:#ffeef7;
+  --accent2:#f3e8ff;
+  --accent3:#fff6fb;
+  --primary-grad: linear-gradient(135deg,#ffd7ec,#e9d9fb);
+  --primary:#d7a7d9;
+  --accent-strong:#f7c7e7;
+  --glass: rgba(255,255,255,0.8);
+  --shadow: 0 16px 40px rgba(11,7,20,0.08);
+  --focus: 0 0 0 6px rgba(217,156,210,0.14);
+}
+
+html,body{height:100%}
+body{margin:0;background:linear-gradient(180deg,var(--accent3),#fff);color:#301b2b;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+.wrap{width:100%;max-width:1100px;transition:background .25s ease}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:64px;height:64px;border-radius:18px;background:var(--primary-grad);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:var(--shadow);transform:translateZ(0);}
+.brand h1{margin:0;font-size:1.3rem;color:#3b2340}
+.tag{margin:0;font-size:0.9rem;color:var(--muted)}
+.author{font-size:0.9rem;color:#5b3b56;background:linear-gradient(90deg,#fff0,#fff0);padding:6px 10px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.4)}
+
+.content{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+.panel{background:linear-gradient(180deg,var(--card),#fff);border-radius:18px;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(185,135,165,0.06)}
+.controls .field{display:block;margin-bottom:12px;font-size:0.95rem;color:#4b3650}
+.controls select,input{width:100%;padding:10px;border-radius:12px;border:1px solid rgba(68,48,66,0.06);background:transparent;outline:none;transition:border-color .18s ease, box-shadow .18s ease}
+.controls select:focus,input:focus{box-shadow:var(--focus);border-color:#d199c9}
+.rangeRow{display:flex;align-items:center;gap:10px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.btn{position:relative;overflow:hidden;padding:10px 14px;border-radius:12px;border:none;background:linear-gradient(90deg,#fff,#fff);cursor:pointer;color:#4a2f46;box-shadow:0 10px 28px rgba(167,132,174,0.08);transition:transform .18s cubic-bezier(.2,.9,.3,1), box-shadow .18s ease, background .18s ease;}
+.btn:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(167,132,174,0.12)}
+.btn:active{transform:translateY(-2px) scale(0.997)}
+.btn:focus{outline:none;box-shadow:var(--focus)}
+
+/* primary */
+.btn.primary{background:var(--primary-grad);font-weight:700;color:#3b1f3b}
+
+/* ripple */
+.ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,0.6);animation:ripple .6s linear;pointer-events:none;}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+
+/* help text */
+.help{margin-top:10px;font-size:0.85rem;color:var(--muted)}
+
+/* main panel */
+.mainpanel{display:flex;flex-direction:column;gap:16px}
+.bigDisplay{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px;border-radius:14px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);transition:background .25s ease}
+.solfege{font-size:64px;font-weight:900;color:#5a2a5d;padding:20px 32px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,0.35),rgba(255,255,255,0.12));box-shadow:0 20px 50px rgba(90,42,93,0.06);transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease, background .25s ease;display:flex;align-items:center;justify-content:center}
+.solfege.pop{transform:translateY(-8px) scale(1.08)}
+.noteInfo{font-size:0.95rem;color:#4a3a4a;transition:opacity .18s ease}
+
+/* viz */
+.vizCard canvas{width:100%;height:120px;border-radius:12px;background:linear-gradient(180deg,#fffafc,#fff);box-shadow:var(--shadow)}
+
+/* recordings */
+.recList{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.recList li{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px;border-radius:12px;background:linear-gradient(180deg,#fff,#fffafc);border:1px solid rgba(185,135,165,0.04)} 
+
+.foot{margin-top:14px;color:#6b5a6a;text-align:center;font-size:0.9rem}
+
+/* responsiveness */
+@media (max-width:920px){
+  .content{grid-template-columns:1fr;gap:12px}
+  .solfege{font-size:44px;padding:14px 20px}
+  .logo{width:52px;height:52px}
+}
